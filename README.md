@@ -1,4 +1,4 @@
-# TodoApp project whith  React Native, Expo, and TypeScript
+# Weather app project whith  React Native, Expo, and TypeScript
 
 ## Project Overview
 
