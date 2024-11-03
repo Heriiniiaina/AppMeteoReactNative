@@ -1,13 +1,16 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import { style } from './Home.style'
 
 
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+   <>
+    <View style={style.meteo_basic}></View>
+    <View style={style.meteo_searchBar}></View>
+    <View style={style.meteo_advance}></View>
+   </>
   )
 }
 
