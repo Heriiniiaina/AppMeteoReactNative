@@ -37,7 +37,9 @@ const Home = () => {
     
       return (
    <>
-    <View style={style.meteo_basic}></View>
+    <View style={style.meteo_basic}>
+        <Text style={{fontSize:80 ,fontFamily:"Alata-Regular"} }>Hello</Text>
+    </View>
     <View style={style.meteo_searchBar}></View>
     <View style={style.meteo_advance}></View>
    </>
