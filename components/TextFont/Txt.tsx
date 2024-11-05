@@ -1,15 +1,16 @@
-import { View, Text } from 'react-native'
+import { View, Text, TextStyle } from 'react-native'
 import React from 'react'
-import { style } from './Txt.style'
+import { s } from './Txt.style'
 
 
 type props = {
-    children:string | number
+    children:string | number | null,
+    style:TextStyle
 }
-const Txt = ({children}:props) => {
+const Txt = ({children,style}:props) => {
   return (
    
-      <Text>{children}</Text>
+      <Text style={[s.txt,style]}>{children}</Text>
    
   )
 }

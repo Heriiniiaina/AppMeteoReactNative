@@ -4,6 +4,7 @@ import { style } from './Home.style'
 
 import {requestForegroundPermissionsAsync,getCurrentPositionAsync} from "expo-location"
 import { MeteoApi } from '@/api/meteo'
+import Txt from '@/components/TextFont/Txt'
 type coord = {
     lat:number,
     lng:number
@@ -38,7 +39,7 @@ const Home = () => {
       return (
    <>
     <View style={style.meteo_basic}>
-        <Text style={{fontSize:80 ,fontFamily:"Alata-Regular"} }>Hello</Text>
+       <Txt style={{fontSize:80}}>qd</Txt>
     </View>
     <View style={style.meteo_searchBar}></View>
     <View style={style.meteo_advance}></View>

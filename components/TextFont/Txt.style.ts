@@ -1,5 +1,8 @@
 import { StyleSheet } from "react-native";
 
-export const style = StyleSheet.create({
-
+export const s = StyleSheet.create({
+    txt:{
+        color:"white",
+        fontFamily:"Alata-Regular"
+    }
 })
