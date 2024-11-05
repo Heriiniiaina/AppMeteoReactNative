@@ -4,8 +4,8 @@ import { s } from './Txt.style'
 
 
 type props = {
-    children:string | number | null,
-    style:TextStyle
+    children?:string | number | null | undefined,
+    style?:TextStyle
 }
 const Txt = ({children,style}:props) => {
   return (
