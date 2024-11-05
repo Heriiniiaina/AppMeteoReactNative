@@ -4,7 +4,7 @@ import { s } from './Txt.style'
 
 
 type props = {
-    children?:string | number | null | undefined,
+    children?:string | number | (string | number)[],
     style?:TextStyle
 }
 const Txt = ({children,style}:props) => {

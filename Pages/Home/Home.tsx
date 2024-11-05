@@ -10,9 +10,14 @@ type coord = {
     lat:number,
     lng:number
 }
+type weatherDataType = {
+    current_weather:{
+        temperature: number
+    }
+}
 const Home = () => {
     const [coords,setCoords] = useState<coord>()
-    const [weather,setWeather] = useState<object>()
+    const [weather,setWeather] = useState<weatherDataType>()
     useEffect(()=>{
         getUserLocation()
     },[])
@@ -40,7 +45,7 @@ const Home = () => {
       return (
    <>
     <View style={style.meteo_basic}>
-      <MeteoBasic/>
+      <MeteoBasic temperature={weather?.current_weather ? Math.round(weather.current_weather.temperature) : undefined}/>
     </View>
     <View style={style.meteo_searchBar}></View>
     <View style={style.meteo_advance}></View>
