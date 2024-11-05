@@ -9,7 +9,7 @@ export default function HomeScreen() {
 
   return (
     <>
-    <ImageBackground source={background} style={s.imgBackground}>
+    <ImageBackground source={background} style={s.imgBackground} imageStyle={s.img}>
       <SafeAreaProvider >
           <SafeAreaView style={s.container}>
               <Home/>
