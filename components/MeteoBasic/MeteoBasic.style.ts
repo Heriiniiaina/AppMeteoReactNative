@@ -11,7 +11,7 @@ export const s = StyleSheet.create({
     img:{
         width:90,
         height:90,
-        backgroundColor:"white"
+      
     },
     temperatureBox:{
         flexDirection:"row",
