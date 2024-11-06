@@ -20,12 +20,16 @@ type weatherDataType = {
 const Home = () => {
     const [coords,setCoords] = useState<coord>()
     const [weather,setWeather] = useState<weatherDataType>()
+    const [city,setCity] = useState<string>("")
     useEffect(()=>{
         getUserLocation()
     },[])
     useEffect(()=>{
-        if(coords)
+        if(coords){
             fetchWeather(coords)
+            fetchCity(coords)
+        }
+
     },[coords])
     const getUserLocation = async ()=>{
         const {status} = await requestForegroundPermissionsAsync()
@@ -41,13 +45,17 @@ const Home = () => {
         const weather =await MeteoApi.fetchWeather(coords)
         setWeather(weather)
     }
+    const fetchCity = async (coords:coord)=>{
+        const city = await MeteoApi.fetchCity(coords)
+        console.log(city)
+    }
     console.log(coords)
     console.log(weather);
     
       return (
    <>
     <View style={style.meteo_basic}>
-      <MeteoBasic temperature={weather?.current_weather ? Math.round(weather.current_weather.temperature) : undefined} interpretation={weather?.current_weather ? getInterpretation(weather.current_weather.weathercode) : undefined}/>
+      <MeteoBasic temperature={weather?.current_weather ? Math.round(weather.current_weather.temperature) : undefined} interpretation={weather?.current_weather ? getInterpretation(weather.current_weather.weathercode) : undefined} city={city}/>
     </View>
     <View style={style.meteo_searchBar}></View>
     <View style={style.meteo_advance}></View>
