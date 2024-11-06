@@ -45,10 +45,14 @@ const Home = () => {
         const weather =await MeteoApi.fetchWeather(coords)
         setWeather(weather)
     }
-    const fetchCity = async (coords:coord)=>{
-        const city = await MeteoApi.fetchCity(coords)
-        console.log(city)
-    }
+    const fetchCity = async (coords: coord) => {
+        try {
+            const city = await MeteoApi.fetchCity(coords); // Assurez-vous que c'est fetchCity et non fetchWeather
+            setCity(city);
+        } catch (error) {
+            console.error("Erreur lors de la récupération de la ville :", error);
+        }
+    };
     console.log(coords)
     console.log(weather);
     
