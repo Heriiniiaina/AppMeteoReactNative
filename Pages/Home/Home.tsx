@@ -15,7 +15,12 @@ type coord = {
 type weatherDataType = {
     current_weather:{
         temperature: number,
-        weathercode:number
+        weathercode:number,
+        windspeed:number
+    },
+    daily:{
+        sunrise:string[], 
+        sunset:string[]
     }
 }
 const Home = () => {
@@ -64,7 +69,7 @@ const Home = () => {
     </View>
     <View style={style.meteo_searchBar}></View>
     <View style={style.meteo_advance}>
-        <MeteoAdvanced/>
+        <MeteoAdvanced wind={weather ? weather.current_weather.windspeed : 0} dusk={weather ? weather.daily?.sunrise?.[0]?.split("T")[1] : 0} dawn={weather ? weather.daily?.sunset?.[0]?.split("T")[1] : 0}/>
     </View>
    </>
   )
