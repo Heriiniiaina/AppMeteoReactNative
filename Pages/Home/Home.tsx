@@ -7,6 +7,7 @@ import { MeteoApi } from '@/api/meteo'
 import Txt from '@/components/TextFont/Txt'
 import MeteoBasic from '@/components/MeteoBasic/MeteoBasic'
 import { getInterpretation, WEATHER_INTERPRATIONS } from '@/services/meteoService'
+import MeteoAdvanced from '@/components/MeteoAdvanced/MeteoAdvanced'
 type coord = {
     lat:number,
     lng:number
@@ -62,7 +63,9 @@ const Home = () => {
       <MeteoBasic temperature={weather?.current_weather ? Math.round(weather.current_weather.temperature) : undefined} interpretation={weather?.current_weather ? getInterpretation(weather.current_weather.weathercode) : undefined} city={city}/>
     </View>
     <View style={style.meteo_searchBar}></View>
-    <View style={style.meteo_advance}></View>
+    <View style={style.meteo_advance}>
+        <MeteoAdvanced/>
+    </View>
    </>
   )
 }

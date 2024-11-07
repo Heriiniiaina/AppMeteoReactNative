@@ -12,7 +12,7 @@ export class MeteoApi{
     static async fetchCity(coords: coord) {
         const response = await axios.get(`https://geocode.xyz/${coords.lat},${coords.lng}?geoit=json`);
         const city = response.data.standard.city
-        return city;
+        return `${response.data.standard.city}, ${response.data.standard.region}`;
     }
   
  }
