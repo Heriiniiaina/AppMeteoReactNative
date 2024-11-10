@@ -1,5 +1,5 @@
 import { View, Text,ImageBackground } from 'react-native'
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { useSelector } from "react-redux"
 import { RootState } from "@/redux/store"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
@@ -26,14 +26,27 @@ type weatherDataType = {
 }
 const forecast = (props: Props) => {
     const forecastData = useSelector((state: RootState) => state.data.data);
+    const [weather,setWeather] = useState([])
     console.log(forecastData.daily.time)
+    
     if (!forecastData || !forecastData.daily || !forecastData.daily.time) {
         return (
             <Text>Loading...</Text>  // Afficher un message de chargement si les données ne sont pas disponibles
         );
     }
-   
-    
+    useEffect(() => {
+        if (forecastData?.daily?.time) {
+            const weatherData = forecastData.daily.time.map((time, index) => ({
+                date: time,
+                weatherCode: forecastData.daily.weathercode[index],
+                maxTemp: forecastData.daily.temperature_2m_max[index],
+                sunrise: forecastData.daily.sunrise[index],
+                sunset: forecastData.daily.sunset[index],
+                windSpeed: forecastData.daily.windspeed_10m_max[index],
+            }));
+            setWeather(weatherData);  // Mise à jour de l'état une seule fois
+        }
+    }, [forecastData]);
     return (
         <>
         <ImageBackground source={background} style={s.imgBackground} imageStyle={s.img}>
@@ -42,7 +55,7 @@ const forecast = (props: Props) => {
                     {Header}
                     <View>
                         {forecastData?.daily.time.map((time, index) => (
-                            <ForcastList key={index} day={time} />
+                            <ForcastList key={time} day={time} />
                         ))}
                     </View>
                         
