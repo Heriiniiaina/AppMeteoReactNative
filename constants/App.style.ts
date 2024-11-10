@@ -14,7 +14,8 @@ export const s = StyleSheet.create({
         opacity:0.75
     },
     header_Text:{
-
+        flex:1,
+        alignItems:"center"
     },
     header:{
         flexDirection:"row"
