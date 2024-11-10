@@ -10,10 +10,22 @@ export class MeteoApi{
         ).data
     }
     static async fetchCity(coords: coord) {
-        const response = await axios.get(`https://geocode.xyz/${coords.lat},${coords.lng}?geoit=json`);
-      
-        return `${response.data.standard.city}, ${response.data.standard.region}`;
+        try {
+            const response = await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coords.lat}&longitude=${coords.lng}&localityLanguage=fr`);
+            
+            
+            const city = response.data.localityInfo.administrative[2].name || "Ville inconnue";
+            const state = response.data.city || "Région inconnue";
+
+            return `${city}, ${state}`;
+        } catch (error) {
+            console.error("Erreur lors de la récupération de la ville :", error);
+            return "Localisation inconnue";
+        }
     }
+
+    
+    
   
  }
  // https://nominatim.openstreetmap.org/reverse?format=json&lat=-18.9008734&lon=47.5157285

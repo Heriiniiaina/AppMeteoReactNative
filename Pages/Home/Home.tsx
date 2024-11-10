@@ -10,6 +10,9 @@ import Txt from '@/components/TextFont/Txt'
 import MeteoBasic from '@/components/MeteoBasic/MeteoBasic'
 import { getInterpretation, WEATHER_INTERPRATIONS } from '@/services/meteoService'
 import MeteoAdvanced from '@/components/MeteoAdvanced/MeteoAdvanced'
+import {AppDispatch,RootState} from "@/redux/store"
+import {useDispatch,useSelector} from "react-redux"
+import { forecast } from '@/redux/store'
 type coord = {
     lat:number,
     lng:number
@@ -29,6 +32,9 @@ const Home = () => {
     const [coords,setCoords] = useState<coord>()
     const [weather,setWeather] = useState<weatherDataType>()
     const [city,setCity] = useState<string>("")
+    const dispatch:AppDispatch =useDispatch()
+    const data = useSelector((state:RootState)=>state.data.data) 
+    
     useEffect(()=>{
         getUserLocation()
     },[])
@@ -39,6 +45,10 @@ const Home = () => {
         }
 
     },[coords])
+    useEffect(()=>{
+        if(coords)
+            handleUpdata()
+    },[weather,coords])
     const getUserLocation = async ()=>{
         const {status} = await requestForegroundPermissionsAsync()
         if(status==="granted"){
@@ -55,15 +65,17 @@ const Home = () => {
     }
     const fetchCity = async (coords: coord) => {
         try {
-            const city = await MeteoApi.fetchCity(coords); // Assurez-vous que c'est fetchCity et non fetchWeather
+            const city = await MeteoApi.fetchCity(coords); 
             setCity(city);
         } catch (error) {
             console.error("Erreur lors de la récupération de la ville :", error);
         }
     };
-    console.log(coords)
-    console.log(weather);
-    
+   const handleUpdata = ()=>{
+    dispatch(forecast(weather?.daily))
+   
+    console.log("okay")
+   }
       return (
    <>
     <View style={style.meteo_basic}>
