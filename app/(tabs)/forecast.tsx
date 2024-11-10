@@ -63,7 +63,7 @@ const Forecast = (props: Props) => {
           <View>
             {weather.map((day, index) => (
                
-                <ForcastList key={day.date} day={day.time} date={day.date} weatherCode={day.weatherCode}/>
+                <ForcastList key={day.date} day={day.time} date={day.date} weatherCode={day.weatherCode} temperature={day.maxTemp}/>
             ))}
           </View>
         </SafeAreaView>
