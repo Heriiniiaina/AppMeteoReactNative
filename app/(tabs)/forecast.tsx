@@ -8,6 +8,7 @@ import background from "@/assets/images/background.png"
 import alata from "@/assets/fonts/11.1 Alata-Regular.ttf"
 import Txt from '@/components/TextFont/Txt'
 import ForcastList from '@/components/ForcastList/ForcastList'
+
 type Props = {}
 const Header = (
     <View style={s.header}>
@@ -17,25 +18,34 @@ const Header = (
         </View>
     </View>
 )
+
+type weatherDataType = {
+    daily:{
+        time:string[]
+    }
+}
 const forecast = (props: Props) => {
     const forecastData = useSelector((state: RootState) => state.data.data);
-    console.log(forecastData)
+    console.log(forecastData.daily.time)
+    if (!forecastData || !forecastData.daily || !forecastData.daily.time) {
+        return (
+            <Text>Loading...</Text>  // Afficher un message de chargement si les données ne sont pas disponibles
+        );
+    }
+   
+    
     return (
         <>
         <ImageBackground source={background} style={s.imgBackground} imageStyle={s.img}>
           <SafeAreaProvider >
               <SafeAreaView style={s.container}>
                     {Header}
-                    <View style={{marginTop:20}}>
-                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
-                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
-                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
-                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
-                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
-                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
-                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
-                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
+                    <View>
+                        {forecastData?.daily.time.map((time, index) => (
+                            <ForcastList key={index} day={time} />
+                        ))}
                     </View>
+                        
               </SafeAreaView>
           </SafeAreaProvider>
         </ImageBackground>

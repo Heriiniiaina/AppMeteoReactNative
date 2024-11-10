@@ -72,7 +72,7 @@ const Home = () => {
         }
     };
    const handleUpdata = ()=>{
-    dispatch(forecast(weather?.daily))
+    dispatch(forecast(weather))
    
     console.log("okay")
    }
