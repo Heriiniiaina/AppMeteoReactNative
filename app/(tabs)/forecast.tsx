@@ -28,6 +28,13 @@ const forecast = (props: Props) => {
                     {Header}
                     <View style={{marginTop:20}}>
                         <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
+                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
+                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
+                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
+                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
+                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
+                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
+                        <ForcastList image={require("@/assets/images/clouds.png")} date='11/12/2024' day='Lundi' temperature={20}/>
                     </View>
               </SafeAreaView>
           </SafeAreaProvider>
