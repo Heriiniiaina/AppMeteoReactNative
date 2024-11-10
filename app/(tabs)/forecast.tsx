@@ -43,7 +43,7 @@ const Forecast = (props: Props) => {
 
   useEffect(() => {
     if (forecastData?.daily?.time) {
-      const weatherData = forecastData.daily.time.map((time, index) => ({
+      const weatherData = forecastData.daily.time.map((time:any, index:any) => ({
         date: time,
         weatherCode: forecastData.daily.weathercode[index],
         maxTemp: forecastData.daily.temperature_2m_max[index],
