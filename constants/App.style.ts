@@ -12,5 +12,14 @@ export const s = StyleSheet.create({
     },
     img:{
         opacity:0.75
+    },
+    header_Text:{
+
+    },
+    header:{
+        flexDirection:"row"
+    },
+    subtitle:{
+        fontSize:20
     }
 })
