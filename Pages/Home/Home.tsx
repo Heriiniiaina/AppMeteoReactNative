@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, KeyboardAvoidingView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { style } from './Home.style'
 import {NavigationContainer} from "@react-navigation/native"
@@ -13,6 +13,7 @@ import MeteoAdvanced from '@/components/MeteoAdvanced/MeteoAdvanced'
 import {AppDispatch,RootState} from "@/redux/store"
 import {useDispatch,useSelector} from "react-redux"
 import { forecast } from '@/redux/store'
+import SearchBar from '@/components/SearchBar/SearchBar'
 type coord = {
     lat:number,
     lng:number
@@ -78,13 +79,18 @@ const Home = () => {
    }
       return (
    <>
-    <View style={style.meteo_basic}>
+   <KeyboardAvoidingView style={style.container}>
+   <View style={style.meteo_basic}>
       <MeteoBasic temperature={weather?.current_weather ? Math.round(weather.current_weather.temperature) : undefined} interpretation={weather?.current_weather ? getInterpretation(weather.current_weather.weathercode) : undefined} city={city}/>
     </View>
-    <View style={style.meteo_searchBar}></View>
+    <View style={style.meteo_searchBar}>
+        <SearchBar/>
+    </View>
     <View style={style.meteo_advance}>
         <MeteoAdvanced wind={weather ? weather.current_weather.windspeed : 0} dusk={weather ? weather.daily?.sunrise?.[0]?.split("T")[1] : 0} dawn={weather ? weather.daily?.sunset?.[0]?.split("T")[1] : 0}/>
     </View>
+   </KeyboardAvoidingView>
+ 
    </>
   )
 }
