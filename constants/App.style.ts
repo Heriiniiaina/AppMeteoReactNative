@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 export const s = StyleSheet.create({
     container:{
         flex:1,
-       
+        gap:50,
+        padding:10
     },
     imgBackground:{
         flex:1,
