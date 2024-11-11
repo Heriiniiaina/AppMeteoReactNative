@@ -3,12 +3,12 @@ import React from 'react'
 import { s } from './SearchBar.style'
 
 interface SearchBarProps{
-    onSubmit:()=>void
+    onSubmit:(city:string)=>void
 }
 
 const SearchBar = ({onSubmit}:SearchBarProps) => {
   return (
-    <TextInput style={s.input} onSubmitEditing={onSubmit} placeholder='Cherche une ville' returnKeyType='done'/>
+    <TextInput style={s.input} onSubmitEditing={(e)=> onSubmit(e.nativeEvent.text)} placeholder='Cherche une ville' returnKeyType='done'/>
   )
 }
 

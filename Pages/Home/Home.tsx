@@ -73,6 +73,14 @@ const Home = () => {
             console.error("Erreur lors de la récupération de la ville :", error);
         }
     };
+    const fetchCoord = async (city: string) => {
+        try {
+            const coords= await MeteoApi.fetchCoordFromCity(city);
+            setCoords(coords);
+        } catch (error) {
+            console.error("Erreur lors de la récupération de la ville :", error);
+        }
+    };
     const handleUpdata = () => {
         dispatch(forecast(weather))
 
@@ -86,7 +94,7 @@ const Home = () => {
                     <MeteoBasic temperature={weather?.current_weather ? Math.round(weather.current_weather.temperature) : undefined} interpretation={weather?.current_weather ? getInterpretation(weather.current_weather.weathercode) : undefined} city={city} />
                 </View>
                 <View style={style.meteo_searchBar}>
-                    <SearchBar />
+                    <SearchBar onSubmit={fetchCoord}/>
                 </View>
                 <View style={style.meteo_advance}>
                     <MeteoAdvanced wind={weather ? weather.current_weather.windspeed : 0} dusk={weather ? weather.daily?.sunrise?.[0]?.split("T")[1] : 0} dawn={weather ? weather.daily?.sunset?.[0]?.split("T")[1] : 0} />

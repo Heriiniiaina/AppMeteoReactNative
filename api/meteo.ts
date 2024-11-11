@@ -17,13 +17,21 @@ export class MeteoApi{
             const city = response.data.localityInfo.administrative[2].name || "Ville inconnue";
             const state = response.data.city || "Région inconnue";
 
-            return `${city}, ${state}`;
+            return `${state}`;
         } catch (error) {
             console.error("Erreur lors de la récupération de la ville :", error);
             return "Localisation inconnue";
         }
     }
-
+    static async fetchCoordFromCity(city:string){
+        try {
+            const {latitude:lat,longitude:lng} = (await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&language=fr&count=1`)).data.results[0]
+            return {lat,lng}
+        } catch (error) {
+            console.log(error)
+            
+        }
+    }
     
     
   
