@@ -29,7 +29,7 @@ export class MeteoApi{
             return {lat,lng}
         } catch (error) {
             console.log(error)
-            
+            throw new Error ("Auccun coordonnées trouvées pour la ville: " + city)
         }
     }
     

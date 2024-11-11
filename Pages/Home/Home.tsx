@@ -1,4 +1,4 @@
-import { View, Text, KeyboardAvoidingView, Platform } from 'react-native'
+import { View, Text, KeyboardAvoidingView, Platform, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { style } from './Home.style'
 import { NavigationContainer } from "@react-navigation/native"
@@ -35,7 +35,7 @@ const Home = () => {
     const [weather, setWeather] = useState<weatherDataType>()
     const [city, setCity] = useState<string>("")
     const dispatch: AppDispatch = useDispatch()
-    const data = useSelector((state: RootState) => state.data.data)
+    const data = useSelector((state: RootState) => state.data)
     
     useEffect(() => {
         getUserLocation()
@@ -50,7 +50,7 @@ const Home = () => {
     useEffect(() => {
         if (coords)
             handleUpdata()
-    }, [weather, coords])
+    }, [weather, coords,city])
     const getUserLocation = async () => {
         const { status } = await requestForegroundPermissionsAsync()
         if (status === "granted") {
@@ -77,12 +77,14 @@ const Home = () => {
         try {
             const coords= await MeteoApi.fetchCoordFromCity(city);
             setCoords(coords);
-        } catch (error) {
-            console.error("Erreur lors de la récupération de la ville :", error);
+        } catch (e) {
+            if (e instanceof Error)
+                Alert.alert("Error ! ",e.message)
         }
     };
     const handleUpdata = () => {
-        dispatch(forecast(weather))
+        if(weather && city)
+        dispatch(forecast({weather,city}))
 
         console.log("okay")
     }

@@ -10,14 +10,7 @@ import ForcastList from '@/components/ForcastList/ForcastList'
 
 type Props = {}
 
-const Header = (
-  <View style={s.header}>
-    <View style={s.header_Text}>
-      <Txt>Antananativo</Txt>
-      <Txt style={s.subtitle}>Prevision pour 7 jours</Txt>
-    </View>
-  </View>
-)
+
 
 type weatherDataType = {
   daily: {
@@ -31,18 +24,19 @@ type weatherDataType = {
 }
 
 const Forecast = (props: Props) => {
-  const forecastData = useSelector((state: RootState) => state.data.data)
+  const forecastData = useSelector((state: RootState) => state.data.weather) as weatherDataType | null
+  const city = useSelector((state:RootState)=>state.data.city)  as string
   const [weather, setWeather] = useState<any[]>([])
 
-  // Check if forecastData is available and contains daily data
+  
   if (!forecastData || !forecastData.daily) {
     return (
-      <Text>Loading...</Text>  // Show loading message if data is unavailable
+      <Text>Loading...</Text>  
     )
   }
 
   useEffect(() => {
-    if (forecastData?.daily?.time) {
+    if (forecastData && forecastData?.daily?.time) {
       const weatherData = forecastData.daily.time.map((time:any, index:any) => ({
         date: time,
         weatherCode: forecastData.daily.weathercode[index],
@@ -51,10 +45,17 @@ const Forecast = (props: Props) => {
         sunset: forecastData.daily.sunset[index],
         windSpeed: forecastData.daily.windspeed_10m_max[index],
       }))
-      setWeather(weatherData)  // Set the weather data to state
+      setWeather(weatherData)  
     }
-  }, [forecastData])  // Run effect when forecastData changes
-
+  }, [forecastData])  
+  const Header = (
+    <View style={s.header}>
+      <View style={s.header_Text}>
+        <Txt>{city}</Txt>
+        <Txt style={s.subtitle}>Prevision pour 7 jours</Txt>
+      </View>
+    </View>
+  )
   return (
     <ImageBackground source={background} style={s.imgBackground} imageStyle={s.img}>
       <SafeAreaProvider>
