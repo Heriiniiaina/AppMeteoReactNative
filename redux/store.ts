@@ -1,6 +1,6 @@
 import { configureStore, createAction, createReducer } from "@reduxjs/toolkit";
 
-// Définir un type pour les données météo et la ville
+
 interface WeatherDataType {
   current_weather: {
     temperature: number;
@@ -23,10 +23,10 @@ const initialState: State = {
   city: null,
 };
 
-// Définir une action avec un payload pour `weather` et `city`
+
 export const forecast = createAction<{ weather: WeatherDataType; city: string }>("forecast");
 
-// Créer un réducteur avec `createReducer`
+
 const userReducer = createReducer(initialState, (builder) => {
   builder.addCase(forecast, (state, action) => {
     state.weather = action.payload.weather;
@@ -34,7 +34,7 @@ const userReducer = createReducer(initialState, (builder) => {
   });
 });
 
-// Configurer le store Redux
+
 export const store = configureStore({
   reducer: {
     data: userReducer,

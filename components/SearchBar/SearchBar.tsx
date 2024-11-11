@@ -8,7 +8,7 @@ interface SearchBarProps{
 
 const SearchBar = ({onSubmit}:SearchBarProps) => {
   return (
-    <TextInput style={s.input} onSubmitEditing={(e)=> onSubmit(e.nativeEvent.text)} placeholder='Cherche une ville' returnKeyType='done'/>
+    <TextInput style={s.input} onSubmitEditing={(e)=> onSubmit(e.nativeEvent.text.trim())} placeholder='Cherche une ville' returnKeyType='done'/>
   )
 }
 
