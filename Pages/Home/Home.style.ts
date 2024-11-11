@@ -8,7 +8,9 @@ export const style = StyleSheet.create({
         flex:2
     },
     meteo_searchBar:{
-        flex:2
+        flex:2,
+        
+        
     },
     meteo_advance:{
         flex:1
