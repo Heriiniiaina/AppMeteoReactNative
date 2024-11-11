@@ -8,7 +8,7 @@ import { DAYS, dayToDDMM } from '@/services/dateService'
 interface forecastType  {
   
     date:string,
-    temperature:number | string,
+    temperature:number,
     day:string,
     weatherCode:number
 }
@@ -23,7 +23,7 @@ const ForcastList = ({date,temperature,weatherCode}:forecastType) => {
         <Image source={image} style={s.image}/>
         <Txt style={s.day}>{day}</Txt>
         <Txt style={s.date}>{dayToDDMM(d)}</Txt>
-        <Txt style={s.temperature}>{temperature}°C</Txt>
+        <Txt style={s.temperature}>{Math.round(temperature)}°C</Txt>
         
     </View>
   )

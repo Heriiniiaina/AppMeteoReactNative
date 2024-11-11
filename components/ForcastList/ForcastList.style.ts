@@ -18,6 +18,7 @@ export const s = StyleSheet.create({
         fontSize:20
     },
     temperature:{
-        fontSize:20
+        fontSize:20,
+        textAlign:"right"
     }
 })
