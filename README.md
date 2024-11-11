@@ -1,4 +1,4 @@
-# Weather app project whith  React Native, Expo, and TypeScript
+# Weather app project with  React Native, Expo, and TypeScript
 
 ## Project Overview
 
