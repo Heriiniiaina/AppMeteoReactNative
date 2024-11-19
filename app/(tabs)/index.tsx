@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { ImageBackground, Text } from 'react-native';
 import Home from '@/Pages/Home/Home';
 import { s } from '@/constants/App.style';
-import background from "@/assets/images/background.png"
+import background from "@/assets/images/logo.jpeg"
 import alata from "@/assets/fonts/11.1 Alata-Regular.ttf"
 import {useFonts} from "expo-font"
 export default function HomeScreen() {

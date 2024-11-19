@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { RootState } from "@/redux/store"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
 import { s } from '@/constants/App.style'
-import background from "@/assets/images/background.png"
+import background from "@/assets/images/logo.jpeg"
 import Txt from '@/components/TextFont/Txt'
 import ForcastList from '@/components/ForcastList/ForcastList'
 
