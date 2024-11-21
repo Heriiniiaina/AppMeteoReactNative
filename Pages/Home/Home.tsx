@@ -8,9 +8,9 @@ import { MeteoApi } from '@/api/meteo'
 import MeteoBasic from '@/components/MeteoBasic/MeteoBasic'
 import { getInterpretation, WEATHER_INTERPRATIONS } from '@/services/meteoService'
 import MeteoAdvanced from '@/components/MeteoAdvanced/MeteoAdvanced'
-import { AppDispatch, RootState } from "@/redux/store"
+import { AppDispatch, RootState,forecast } from "@/redux/store"
 import { useDispatch, useSelector } from "react-redux"
-import { forecast } from '@/redux/store'
+
 import SearchBar from '@/components/SearchBar/SearchBar'
 
 type coord = {
