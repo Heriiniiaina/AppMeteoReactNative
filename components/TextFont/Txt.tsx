@@ -1,4 +1,4 @@
-import { View, Text, TextStyle } from 'react-native'
+import {  Text, TextStyle } from 'react-native'
 import React from 'react'
 import { s } from './Txt.style'
 

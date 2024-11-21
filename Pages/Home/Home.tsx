@@ -1,12 +1,10 @@
-import { View, Text, KeyboardAvoidingView, Platform, Alert } from 'react-native'
+import { View, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { style } from './Home.style'
-import { NavigationContainer } from "@react-navigation/native"
-import { } from "react-native-screens"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
+
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from "expo-location"
 import { MeteoApi } from '@/api/meteo'
-import Txt from '@/components/TextFont/Txt'
+
 import MeteoBasic from '@/components/MeteoBasic/MeteoBasic'
 import { getInterpretation, WEATHER_INTERPRATIONS } from '@/services/meteoService'
 import MeteoAdvanced from '@/components/MeteoAdvanced/MeteoAdvanced'
@@ -14,7 +12,7 @@ import { AppDispatch, RootState } from "@/redux/store"
 import { useDispatch, useSelector } from "react-redux"
 import { forecast } from '@/redux/store'
 import SearchBar from '@/components/SearchBar/SearchBar'
-import { s } from '@/constants/App.style'
+
 type coord = {
     lat: number,
     lng: number

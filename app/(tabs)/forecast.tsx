@@ -29,11 +29,7 @@ const Forecast = (props: Props) => {
   const [weather, setWeather] = useState<any[]>([])
 
   
-  if (!forecastData || !forecastData.daily) {
-    return (
-      <Text>Loading...</Text>  
-    )
-  }
+  
 
   useEffect(() => {
     if (forecastData && forecastData?.daily?.time) {
