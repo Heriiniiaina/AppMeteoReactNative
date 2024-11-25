@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+
 import React, { useEffect, useState } from 'react'
 import Txt from '../TextFont/Txt'
 import { getDate } from '@/services/dateService'
@@ -17,9 +17,9 @@ const Clock = (props: Props) => {
         }
     },[])
   return (
-    <>
+   
         <Txt style={s.timeText}>{time}</Txt>
-    </>
+   
   )
 }
 

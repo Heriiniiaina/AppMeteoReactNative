@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View,  Image } from 'react-native'
 import React from 'react'
 import Txt from '../TextFont/Txt'
 import { s } from './ForcastList.style'
