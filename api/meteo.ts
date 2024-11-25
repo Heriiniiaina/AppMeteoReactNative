@@ -14,7 +14,7 @@ export class MeteoApi{
             const response = await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coords.lat}&longitude=${coords.lng}&localityLanguage=fr`);
             
             
-            const city = response.data.localityInfo.administrative[2].name || "Ville inconnue";
+           
             const state = response.data.city || "Région inconnue";
 
             return `${state}`;

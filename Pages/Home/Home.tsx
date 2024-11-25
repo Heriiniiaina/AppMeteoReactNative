@@ -6,7 +6,7 @@ import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from "expo
 import { MeteoApi } from '@/api/meteo'
 
 import MeteoBasic from '@/components/MeteoBasic/MeteoBasic'
-import { getInterpretation, WEATHER_INTERPRATIONS } from '@/services/meteoService'
+import { getInterpretation} from '@/services/meteoService'
 import MeteoAdvanced from '@/components/MeteoAdvanced/MeteoAdvanced'
 import { AppDispatch, RootState,forecast } from "@/redux/store"
 import { useDispatch, useSelector } from "react-redux"
@@ -33,7 +33,7 @@ const Home = () => {
     const [weather, setWeather] = useState<weatherDataType>()
     const [city, setCity] = useState<string>("")
     const dispatch: AppDispatch = useDispatch()
-    const data = useSelector((state: RootState) => state.data)
+
     
     useEffect(() => {
         getUserLocation()

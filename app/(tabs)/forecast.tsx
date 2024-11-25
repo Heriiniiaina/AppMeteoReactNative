@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground } from 'react-native'
+import { View,  ImageBackground } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useSelector } from "react-redux"
 import { RootState } from "@/redux/store"
